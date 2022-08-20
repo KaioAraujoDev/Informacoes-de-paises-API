@@ -8,16 +8,17 @@ function consultaApi() {
             sessionStorage.setItem("Paises",JSON.stringify(resultado));
 
             exibirPaises(resultado);
-            trocaPagina(resultado);
+            
         })
 }
 
 function exibirPaises(res) {
-    const divResults = document.querySelector('#results');
+    let divResults = document.querySelector('#results');
+    divResults.innerHTML = ``;
 
     let c=0;
     res.forEach(element => {
-
+        
         item = document.createElement('button');
         item.id = c;
         item.className = "item";
@@ -41,9 +42,11 @@ function exibirPaises(res) {
         c++;
     });
 
-    
+    trocaPagina(res);
     
 }
+
+//Função para passar a informação do item selecionado para sessionStorage e fazer a troca de página
 
 function trocaPagina(res) {
     const itemsDiv = document.querySelectorAll('.item');

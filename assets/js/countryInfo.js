@@ -93,7 +93,7 @@ function findBorderCountries(JSONCountries, borders) {
 
         });
 
-        showBorderCountries(result);
+        return showBorderCountries(result);
     }else{
         return 'Not declared';
     }
@@ -103,16 +103,13 @@ function findBorderCountries(JSONCountries, borders) {
 
 
 function showBorderCountries(result) {
-    const listBorders = document.createElement('ul');
+    let listBorders = `<ul>`;
 
     result.forEach(element => {
-        const itemList = document.createElement('li');
+        listBorders += `<li>${element.name.common}</li>`;
 
-        itemList.innerHTML = element.name.common;
-
-        listBorders.appendChild(itemList);
-        console.log(itemList);
-    })
+    });
+    listBorders += `</ul>`;
 
     return listBorders;
 }

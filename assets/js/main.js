@@ -62,3 +62,21 @@ function trocaPagina(res) {
         });
     });
 }
+
+function filterCountries(){
+    const JSONCountries = JSON.parse(sessionStorage.getItem('Paises'));
+    const input = document.querySelector('#inputCountry');
+    const select = document.querySelector('#select');
+    const valueItemSelected = select.options[select.selectedIndex].value.toLowerCase();
+
+    let result = [];
+    if(valueItemSelected == "all"){
+        result = JSONCountries.filter(element => element.name.common.toLowerCase().includes(input.value.toLowerCase()))
+
+        return result;
+    }else{
+        result = JSONCountries.filter((element) => element.name.common.toLowerCase().includes(input.value.toLowerCase()) && element.continents[0].toLowerCase().includes(valueItemSelected))
+        return result;
+    }
+    
+}

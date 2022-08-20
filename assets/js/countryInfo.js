@@ -11,6 +11,7 @@ function exibirPais() {
 
     const sectionImg = document.createElement('section')
     const sectionInfo = document.createElement('section');
+    const divBorderCountries = document.createElement('div');
 
     sectionImg.innerHTML = `
         <section>
@@ -22,10 +23,7 @@ function exibirPais() {
         <h2>${dadosPais.name.common}</h2>
         <div>
             <ul>
-                <li><strong>Native Name:${findLastCommonNativeName(dadosPais)
-                }    
-                
-                </li>
+                <li><strong>Native Name:${findLastCommonNativeName(dadosPais)}</li>
                 <li><strong>Population:</strong>${dadosPais.population}</li>
                 <li><strong>Region:</strong>${dadosPais.region}</li>
                 <li><strong>Sub Region:</strong>${dadosPais.subregion}</li>
@@ -40,24 +38,31 @@ function exibirPais() {
         </div>
         
     `;
-    
+
+    divBorderCountries.innerHTML = `
+        Border Countries:
+        ${findBorderCountries(JSON.parse(sessionStorage.getItem('Paises')), dadosPais.borders)}
+    `;
+
+
+    sectionInfo.appendChild(divBorderCountries)
     main.appendChild(sectionImg);
     main.appendChild(sectionInfo);
 }
 
 // Função para converter JSON de Nome nativo em string capturar apenas a informação necessária
 
-function findLastCommonNativeName(dadosPais){
+function findLastCommonNativeName(dadosPais) {
     const JSONNomes = JSON.stringify(dadosPais.name.nativeName);
-    const Ultimonome = JSONNomes.substring(JSONNomes.lastIndexOf(':') + 2 ,JSONNomes.length-3);
+    const Ultimonome = JSONNomes.substring(JSONNomes.lastIndexOf(':') + 2, JSONNomes.length - 3);
 
     return Ultimonome;
 }
 
 // Função para converter JSON de Currencies em string capturar apenas a informação necessária 
-function findCurrencies(data){
+function findCurrencies(data) {
     const JSONCurrencies = JSON.stringify(data)
-    const Currencie = JSONCurrencies.substring(JSONCurrencies.lastIndexOf('name')+ 7,JSONCurrencies.lastIndexOf(',')- 1);
+    const Currencie = JSONCurrencies.substring(JSONCurrencies.lastIndexOf('name') + 7, JSONCurrencies.lastIndexOf(',') - 1);
 
     return Currencie;
 
@@ -66,16 +71,48 @@ function findCurrencies(data){
 // Função para converter JSON de linguagens em string capturar apenas a informação necessária
 // Retornar apenas os valores necessários
 
-function findLanguages(data){
+function findLanguages(data) {
     let JSONLanguages = JSON.stringify(data);
-    let arrayLanguages=[];
+    let arrayLanguages = [];
 
-    console.log(JSONLanguages);
-       while(JSONLanguages.indexOf(':') > 0){
-           arrayLanguages.push(JSONLanguages.substring(JSONLanguages.indexOf(':')+ 2,JSONLanguages.indexOf(',') - 1 > 0 ? JSONLanguages.indexOf(',') - 1 : JSONLanguages.indexOf('}')- 1 ))
-           JSONLanguages = JSONLanguages.replace(':','');
-           JSONLanguages = JSONLanguages.replace(',','');
-       }
-    
-       return arrayLanguages;
+    while (JSONLanguages.indexOf(':') > 0) {
+        arrayLanguages.push(JSONLanguages.substring(JSONLanguages.indexOf(':') + 2, JSONLanguages.indexOf(',') - 1 > 0 ? JSONLanguages.indexOf(',') - 1 : JSONLanguages.indexOf('}') - 1))
+        JSONLanguages = JSONLanguages.replace(':', '');
+        JSONLanguages = JSONLanguages.replace(',', '');
+    }
+
+    return arrayLanguages;
+}
+
+function findBorderCountries(JSONCountries, borders) {
+
+    if (borders !== undefined) {
+        let result = [];
+        borders.forEach(border => {
+            result.push(JSONCountries.find(element => element.cca3 == border))
+
+        });
+
+        showBorderCountries(result);
+    }else{
+        return 'Not declared';
+    }
+
+
+}
+
+
+function showBorderCountries(result) {
+    const listBorders = document.createElement('ul');
+
+    result.forEach(element => {
+        const itemList = document.createElement('li');
+
+        itemList.innerHTML = element.name.common;
+
+        listBorders.appendChild(itemList);
+        console.log(itemList);
+    })
+
+    return listBorders;
 }

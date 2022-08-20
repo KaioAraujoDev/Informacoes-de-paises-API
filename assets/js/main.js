@@ -3,6 +3,10 @@ function consultaApi() {
         .then(async (res) => {
             const resultado = await res.json();
             console.log(resultado);
+
+            //Guardando Valores na session storage
+            sessionStorage.setItem("Paises",JSON.stringify(resultado));
+
             exibirPaises(resultado);
             trocaPagina(resultado);
         })

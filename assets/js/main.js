@@ -49,7 +49,7 @@ function trocaPagina(res) {
         element.addEventListener('click', (event) => {
 
             sessionStorage.setItem("PaisSelecionado",JSON.stringify(res[element.id]))
-            window.location.href = "/InformacoesPaises/assets/view/InfoCountry.html"; 
+            window.location.href = "../view/InfoCountry.html"; 
 
             
         });

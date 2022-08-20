@@ -3,6 +3,7 @@ const body = document.querySelector('body');
 body.onload = exibirPais();
 
 //Buscar dados do país na sessionStorage
+//Exibir informações em HTML
 
 function exibirPais() {
     const dadosPais = JSON.parse(sessionStorage.getItem('PaisSelecionado'));
@@ -21,7 +22,7 @@ function exibirPais() {
         <h2>${dadosPais.name.common}</h2>
         <div>
             <ul>
-                <li><strong>Native Name:${encontrarUltimoNomeNativoComum(dadosPais)
+                <li><strong>Native Name:${findLastCommonNativeName(dadosPais)
                 }    
                 
                 </li>
@@ -32,9 +33,10 @@ function exibirPais() {
             </ul>
             <ul>
                 <li><strong>Top Level Domain:</strong>${dadosPais.tld[0]}</li>
-                <li><strong>Currencies:</strong></li>
-                <li><strong>Languages:</strong></li>
+                <li><strong>Currencies:</strong>${findCurrencies(dadosPais.currencies)}</li>
+                <li><strong>Languages:</strong>${findLanguages(dadosPais.languages)}</li>
             </ul>
+
         </div>
         
     `;
@@ -43,9 +45,37 @@ function exibirPais() {
     main.appendChild(sectionInfo);
 }
 
-function encontrarUltimoNomeNativoComum(dadosPais){
+// Função para converter JSON de Nome nativo em string capturar apenas a informação necessária
+
+function findLastCommonNativeName(dadosPais){
     const JSONNomes = JSON.stringify(dadosPais.name.nativeName);
     const Ultimonome = JSONNomes.substring(JSONNomes.lastIndexOf(':') + 2 ,JSONNomes.length-3);
 
-    console.log(Ultimonome);
+    return Ultimonome;
+}
+
+// Função para converter JSON de Currencies em string capturar apenas a informação necessária 
+function findCurrencies(data){
+    const JSONCurrencies = JSON.stringify(data)
+    const Currencie = JSONCurrencies.substring(JSONCurrencies.lastIndexOf('name')+ 7,JSONCurrencies.lastIndexOf(',')- 1);
+
+    return Currencie;
+
+}
+
+// Função para converter JSON de linguagens em string capturar apenas a informação necessária
+// Retornar apenas os valores necessários
+
+function findLanguages(data){
+    let JSONLanguages = JSON.stringify(data);
+    let arrayLanguages=[];
+
+    console.log(JSONLanguages);
+       while(JSONLanguages.indexOf(':') > 0){
+           arrayLanguages.push(JSONLanguages.substring(JSONLanguages.indexOf(':')+ 2,JSONLanguages.indexOf(',') - 1 > 0 ? JSONLanguages.indexOf(',') - 1 : JSONLanguages.indexOf('}')- 1 ))
+           JSONLanguages = JSONLanguages.replace(':','');
+           JSONLanguages = JSONLanguages.replace(',','');
+       }
+    
+       return arrayLanguages;
 }

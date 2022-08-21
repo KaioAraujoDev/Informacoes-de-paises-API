@@ -21,13 +21,13 @@ function exibirPaises(res) {
         
         item = document.createElement('button');
         item.id = c;
-        item.className = "item";
+        item.className = "itemButton";
 
         item.innerHTML = `
-        <div>
+        <div class="divImg">
             <img src=${element.flags.svg}>
         </div>
-        <div>
+        <div class="divInfo">
             
             <h2>${element.name.common}</h2>
             <ul>
@@ -49,7 +49,7 @@ function exibirPaises(res) {
 //Função para passar a informação do item selecionado para sessionStorage e fazer a troca de página
 
 function trocaPagina(res) {
-    const itemsDiv = document.querySelectorAll('.item');
+    const itemsDiv = document.querySelectorAll('.itemButton');
 
     //Trocando de página e armazenando dados do país temporariamente 
     itemsDiv.forEach(element => {

@@ -1,2 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&family=Nunito+Sans:wght@300;600;800&family=Space+Grotesk:wght@500&display=swap');
 
+* {
+    padding:0;
+    margin:0;
+    vertical-align:baseline;
+    list-style:none;
+    border:0;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+}
+

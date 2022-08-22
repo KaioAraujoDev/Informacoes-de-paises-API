@@ -1,0 +1,64 @@
+@use 'resources';
+@use 'header';
+
+$main-color : #fafafa;
+
+.linkBack {
+    text-decoration: none;
+    color:black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    box-shadow: 0 0 .5em #ccc;
+    width:6em;
+    border-radius: .25em;
+    margin: 5em 0;
+    padding: .25em;
+    img{
+        margin-right: .25em;
+    }
+}
+
+main {
+    margin: 1em;
+    background-color: $main-color;
+}
+
+.sectionImg{
+    margin-bottom: 2.5em;
+    section img {
+        width: 100%;
+    }
+}
+
+.sectionInfo{
+    h2{
+        margin-bottom: .5em;
+    }
+    .divInfo ul li{
+        margin-bottom: .5em;
+    }
+    .divInfo ul{
+        margin-bottom: 3em;
+    }
+    .divInfo ul li strong{
+        margin-right: .5em;
+    }
+
+    .divBorderCountries{
+        h2{
+            font-size: 1.15em;
+        }
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        ul li {
+            margin-right: .5em;
+            background-color: #ffffff;
+            padding: .5em 2em;
+            box-shadow: 0 0 .25em #ccc;
+        }
+    }
+}

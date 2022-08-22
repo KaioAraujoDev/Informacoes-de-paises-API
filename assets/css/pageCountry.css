@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&family=Nunito+Sans:wght@300;600;800&family=Space+Grotesk:wght@500&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+  list-style: none;
+  border: 0;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  background-color: #ffffff;
+  height: 10%;
+  width: 100%;
+  box-shadow: 0 0 1rem #ccc;
+  display: flex;
+  align-items: center;
+  padding: 0 2em;
+  font-weight: 800;
+  font-size: 0.5rem;
+}
+
+.linkBack {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  box-shadow: 0 0 0.5em #ccc;
+  width: 6em;
+  border-radius: 0.25em;
+  margin: 5em 0;
+  padding: 0.25em;
+}
+.linkBack img {
+  margin-right: 0.25em;
+}
+
+main {
+  margin: 1em;
+  background-color: #fafafa;
+}
+
+.sectionImg {
+  margin-bottom: 2.5em;
+}
+.sectionImg section img {
+  width: 100%;
+}
+
+.sectionInfo h2 {
+  margin-bottom: 0.5em;
+}
+.sectionInfo .divInfo ul li {
+  margin-bottom: 0.5em;
+}
+.sectionInfo .divInfo ul {
+  margin-bottom: 3em;
+}
+.sectionInfo .divInfo ul li strong {
+  margin-right: 0.5em;
+}
+.sectionInfo .divBorderCountries h2 {
+  font-size: 1.15em;
+}
+.sectionInfo .divBorderCountries ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.sectionInfo .divBorderCountries ul li {
+  margin-right: 0.5em;
+  background-color: #ffffff;
+  padding: 0.5em 2em;
+  box-shadow: 0 0 0.25em #ccc;
+}
+
+/*# sourceMappingURL=pageCountry.css.map */

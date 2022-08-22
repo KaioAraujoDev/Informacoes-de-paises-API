@@ -10,20 +10,24 @@ function exibirPais() {
     const main = document.querySelector('main');
 
     const sectionImg = document.createElement('section')
+    sectionImg.className = 'sectionImg';
     const sectionInfo = document.createElement('section');
+    sectionInfo.className = 'sectionInfo';
     const divBorderCountries = document.createElement('div');
+    divBorderCountries.className = 'divBorderCountries';
 
+    
     sectionImg.innerHTML = `
-        <section>
+        <section >
             <img src=${dadosPais.flags.svg}>
         </section>
     `;
 
     sectionInfo.innerHTML = `
         <h2>${dadosPais.name.common}</h2>
-        <div>
+        <div class="divInfo">
             <ul>
-                <li><strong>Native Name:${findLastCommonNativeName(dadosPais)}</li>
+                <li><strong>Native Name:</strong>${findLastCommonNativeName(dadosPais)}</li>
                 <li><strong>Population:</strong>${dadosPais.population}</li>
                 <li><strong>Region:</strong>${dadosPais.region}</li>
                 <li><strong>Sub Region:</strong>${dadosPais.subregion}</li>
@@ -40,7 +44,7 @@ function exibirPais() {
     `;
 
     divBorderCountries.innerHTML = `
-        Border Countries:
+        <h2>Border Countries:</h2>
         ${findBorderCountries(JSON.parse(sessionStorage.getItem('Paises')), dadosPais.borders)}
     `;
 

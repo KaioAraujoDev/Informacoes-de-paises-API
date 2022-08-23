@@ -1,9 +1,15 @@
+if(sessionStorage.getItem("Paises")){
+    exibirPaises(JSON.parse(sessionStorage.getItem("Paises")));
+}else{
+    consultaApi();
+}
+
+
 function consultaApi() {
     fetch('https://restcountries.com/v3.1/all')
         .then(async (res) => {
             const resultado = await res.json();
-            console.log(resultado);
-
+        
             //Guardando Valores na session storage
             sessionStorage.setItem("Paises",JSON.stringify(resultado));
 

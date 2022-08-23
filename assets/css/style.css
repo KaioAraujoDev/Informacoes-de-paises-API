@@ -27,7 +27,6 @@ header {
 
 main {
   margin: 1em;
-  background-color: #fafafa;
 }
 
 .divInput {
@@ -43,7 +42,6 @@ main {
   margin: 0 1.5em;
 }
 .divInput input {
-  color: hsl(0deg, 0%, 98%);
   font-weight: 500;
 }
 

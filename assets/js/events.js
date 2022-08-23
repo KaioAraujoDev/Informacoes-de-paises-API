@@ -1,4 +1,4 @@
-consultaApi();
+
 
 const input = document.querySelector('#inputCountry');
 
